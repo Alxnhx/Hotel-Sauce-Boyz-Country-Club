@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Gestionar Habitaciones | Sauce Boyz Country Club</title>
+  <link
+    href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+    rel="stylesheet"
+  />
+  <!-- Firebase SDKs, FontAwesome, etc. -->
+  <script src="https://kit.fontawesome.com/0d234d02b1.js" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
+  <script>emailjs.init('oVm0bGQr9yNc40mxV');</script>
+</head>
+<body>
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container">
+      <a class="navbar-brand" href="../index.html">
+        <i class="fas fa-leaf me-2"></i>Admin Panel
+      </a>
+      <div class="ms-auto" id="auth-status"></div>
+    </div>
+  </nav>
+
+  <main class="container py-5">
+    <h1 class="mb-4">Gestión de Habitaciones</h1>
+
+    <div class="row">
+      <!-- Formulario de Alta / Edición -->
+      <div class="col-md-4">
+        <div class="card shadow-sm mb-4">
+          <div class="card-header">
+            <span id="form-title">Nueva Habitación</span>
+          </div>
+          <div class="card-body">
+            <form id="room-form">
+              <input type="hidden" id="roomId" />
+              <div class="mb-3">
+                <label class="form-label">Nombre</label>
+                <input type="text" id="roomName" class="form-control" required />
+              </div>
+              <div class="mb-3">
+                <label class="form-label">Tipo</label>
+                <select id="roomType" class="form-select" required>
+                  <option value="">Selecciona...</option>
+                  <option value="Suite Presidencial">Suite Presidencial</option>
+                  <option value="Suite Ejecutiva">Suite Ejecutiva</option>
+                  <option value="Suite Junior">Suite Junior</option>
+                  <option value="Doble Deluxe">Doble Deluxe</option>
+                  <option value="Doble Estandar">Doble Estandar</option>
+                  <option value="Individual">Individual</option>
+                </select>
+              </div>
+              <div class="mb-3">
+                <label class="form-label">Precio por noche (MXN)</label>
+                <input type="number" id="roomPrice" class="form-control" min="0" required />
+              </div>
+              <div class="mb-3">
+                <label class="form-label">Características (coma-separado)</label>
+                <textarea id="roomFeatures" class="form-control" rows="2"></textarea>
+              </div>
+              <div class="mb-3">
+                <label class="form-label">URLs de Imagen (coma-separado)</label>
+                <textarea id="roomImages" class="form-control" rows="2"></textarea>
+              </div>
+              <div class="d-flex justify-content-between">
+                <button type="submit" class="btn btn-success" id="save-room">
+                  Guardar
+                </button>
+                <button type="button" class="btn btn-secondary" id="cancel-edit" style="display:none">
+                  Cancelar
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+
+      <!-- Tabla de Habitaciones -->
+      <div class="col-md-8">
+        <div class="table-responsive">
+          <table class="table table-striped" id="rooms-table">
+            <thead class="table-dark">
+              <tr>
+                <th>Nombre</th>
+                <th>Tipo</th>
+                <th>Precio</th>
+                <th>Features</th>
+                <th>Imágenes</th>
+                <th>Acciones</th>
+              </tr>
+            </thead>
+            <tbody></tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- Scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script type="module" src="../js/firebaseConfig.js"></script>
+  <script type="module" src="../js/rooms-management.js"></script>
+</body>
+</html>

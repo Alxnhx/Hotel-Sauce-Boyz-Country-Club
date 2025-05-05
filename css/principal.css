@@ -1,0 +1,118 @@
+:root {
+    --color-dark-green: #1B3A2F;
+    --color-medium-green: #2E8B57;
+    --color-light-green:  #98FB98;
+    --color-cream:  #f0ffff;
+    --color-olive: #FFC107;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: var(--color-cream);
+    color: var(--color-dark-green);
+}
+
+.navbar {
+    background-color: var(--color-dark-green);
+}
+
+.navbar-brand, .navbar-nav .nav-link {
+    color: var(--color-cream);
+}
+
+.navbar-nav .nav-link:hover {
+    color: var(--color-light-green);
+}
+
+.btn-primary {
+    background-color: var(--color-medium-green);
+    border-color: var(--color-medium-green);
+}
+
+.btn-primary:hover {
+    background-color: var(--color-olive);
+    border-color: var(--color-olive);
+}
+
+.btn-outline-primary {
+    color: var(--color-medium-green);
+    border-color: var(--color-medium-green);
+}
+
+.btn-outline-primary:hover {
+    background-color: var(--color-medium-green);
+    color: var(--color-cream);
+}
+
+.hero-section {
+    background-image:
+      linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)),
+      url("../assets/img/fondo2.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    color: white;
+    padding: 150px 0;
+    margin-bottom: 30px;
+  }
+  
+
+.search-box {
+    background-color: rgba(236, 242, 228, 0.9);
+    border-radius: 10px;
+    padding: 20px;
+    margin-top: -50px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.card {
+    border: none;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+}
+
+.card-title {
+    color: var(--color-medium-green);
+}
+
+.amenity-icon {
+    width: 60px;
+    height: 60px;
+    background-color: var(--color-dark-green);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 15px;
+}
+
+.amenity-icon i {
+    font-size: 24px;
+    color: var(--color-cream);
+}
+
+footer {
+    background-color: var(--color-dark-green);
+    color: var(--color-cream);
+    padding: 40px 0;
+}
+
+.room-badge {
+    background-color: var(--color-olive);
+    color: white;
+}
+
+.review-card {
+    background-color: white;
+    border-left: 4px solid var(--color-dark-green);
+}
+
+.star-rating {
+    color: gold;
+}

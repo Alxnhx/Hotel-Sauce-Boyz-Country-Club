@@ -1,0 +1,669 @@
+ayudame a desarrollar una pagina hotelera con los siguientes requerimentos, ya tengo el login y la pagina principal este es el login <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link rel="stylesheet" href="css/form.css">
+    <title>Formulario Firebase</title>
+</head>
+<body>
+    <div class="container" id="container">
+        <div class="form-container sign-up">
+            <form>
+                <h1>Crear Usuario</h1>
+                <div class="social-icons">
+                    <div class="social-icons">
+                        <button class="btnGoogle"><i class="fa-brands fa-google-plus-g"></i></button>
+                        <button class="btnFacebook"><i class="fa-brands fa-facebook-f"></i></button>
+                        <button class="btnGitHub"><i class="fa-brands fa-github"></i></button>
+                      </div>
+                  </div>                  
+                <span>o Usa tu correo electronico para registrarte</span>
+                <input type="text" placeholder="Nombre" id="nombre">
+                <input type="email" placeholder="example@gmail.com" id="emailr">
+                <input type="password" placeholder="Contraseña" id="passr">
+                <button type="submit" id="register-btn">Registrar</button>
+            </form>
+        </div>
+        <div class="form-container sign-in">
+            <form>
+                <h1>Iniciar sesion</h1>
+                <div class="social-icons">
+                    <button class="btnGoogle"><i class="fa-brands fa-google-plus-g"></i></button>
+                    <button class="btnFacebook"><i class="fa-brands fa-facebook-f"></i></button>
+                    <button class="btnGitHub"><i class="fa-brands fa-github"></i></button>
+                  </div>  
+                <span>o Usa tu correo electronico y contrasena</span>
+                <input type="email" placeholder="example@gmail.com" id="email">
+                <input type="password" placeholder="Contraseña" id="pass">
+                <a href="#">Se te olvido la contrasena?</a>
+                <button type="submit" id="login-btn">Iniciar sesion</button>
+            </form>
+        </div>
+        <div class="toggle-container">
+            <div class="toggle">
+                <div class="toggle-panel toggle-left">
+                <h1>Bienvenido denuevo</h1>
+                <p></p>
+                <button class="hidden" id="login">Iniciar sesion</button>
+                </div>
+                <div class="toggle-panel toggle-right">
+                <h1>Hola, Amigo</h1>
+                <p></p>
+                <button class="hidden" id="register">Iniciar sesion</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+<script src="js/form.js"></script>
+<script type="module" src="js/conefire.js"></script>
+</html> 			y esta mi pagina principal <!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Green Haven Hotel</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/principal.css">
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg sticky-top">
+        <div class="container">
+            <a class="navbar-brand" href="#">
+                <i class="fas fa-leaf me-2"></i>Sauce Boyz Country Club
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="#">Inicio</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Habitaciones</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Servicios</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Promociones</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Contacto</a>
+                    </li>
+                </ul>
+                <div class="ms-3">
+                    <button class="btn btn-sm btn-outline-light me-2" data-bs-toggle="modal" data-bs-target="#loginModal">Iniciar Sesión</button>
+                    <button class="btn btn-sm btn-light" data-bs-toggle="modal" data-bs-target="#registerModal">Registrarse</button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <section class="hero-section text-center">
+        <div class="container">
+            <h1 class="display-4 fw-bold">Descubre el paraíso natural</h1>
+            <p class="lead">Disfruta de una experiencia única en armonía con la naturaleza</p>
+            <button class="btn btn-light btn-lg mt-3">Reserva ahora</button>
+        </div>
+    </section>
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-10">
+                <div class="search-box">
+                    <form>
+                        <div class="row g-3">
+                            <div class="col-md-3">
+                                <label class="form-label">Fecha de llegada</label>
+                                <input type="date" class="form-control">
+                            </div>
+                            <div class="col-md-3">
+                                <label class="form-label">Fecha de salida</label>
+                                <input type="date" class="form-control">
+                            </div>
+                            <div class="col-md-2">
+                                <label class="form-label">Adultos</label>
+                                <select class="form-select">
+                                    <option value="1">1</option>
+                                    <option value="2">2</option>
+                                    <option value="3">3</option>
+                                    <option value="4">4</option>
+                                </select>
+                            </div>
+                            <div class="col-md-2">
+                                <label class="form-label">Niños</label>
+                                <select class="form-select">
+                                    <option value="0">0</option>
+                                    <option value="1">1</option>
+                                    <option value="2">2</option>
+                                    <option value="3">3</option>
+                                </select>
+                            </div>
+                            <div class="col-md-2 d-flex align-items-end">
+                                <button class="btn btn-primary w-100">Buscar</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <section class="py-5">
+        <div class="container">
+            <h2 class="text-center mb-5">Nuestras Habitaciones</h2>
+            <div class="row">
+                <div class="col-md-4 mb-4">
+                    <div class="card h-100">
+                        <img src="/api/placeholder/400/250" class="card-img-top" alt="Habitación Individual">
+                        <div class="card-body">
+                            <span class="badge room-badge mb-2">Individual</span>
+                            <h5 class="card-title">Habitación Eco Individual</h5>
+                            <p class="card-text">Habitación acogedora con vistas al jardín, perfecta para viajeros solitarios.</p>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <strong class="text-primary">$120 / noche</strong>
+                                <button class="btn btn-sm btn-outline-primary">Ver detalles</button>
+                            </div>
+                            <div class="mt-3">
+                                <small>
+                                    <i class="fas fa-wifi me-2"></i>WiFi gratis
+                                    <i class="fas fa-coffee ms-3 me-2"></i>Desayuno
+                                </small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="card h-100">
+                        <img src="/api/placeholder/400/250" class="card-img-top" alt="Habitación Doble">
+                        <div class="card-body">
+                            <span class="badge room-badge mb-2">Doble</span>
+                            <h5 class="card-title">Habitación Eco Doble</h5>
+                            <p class="card-text">Espaciosa habitación con balcón privado y vistas panorámicas a la naturaleza.</p>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <strong class="text-primary">$180 / noche</strong>
+                                <button class="btn btn-sm btn-outline-primary">Ver detalles</button>
+                            </div>
+                            <div class="mt-3">
+                                <small>
+                                    <i class="fas fa-wifi me-2"></i>WiFi gratis
+                                    <i class="fas fa-coffee ms-3 me-2"></i>Desayuno
+                                    <i class="fas fa-tv ms-3 me-2"></i>Smart TV
+                                </small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="card h-100">
+                        <img src="/api/placeholder/400/250" class="card-img-top" alt="Suite">
+                        <div class="card-body">
+                            <span class="badge room-badge mb-2">Suite</span>
+                            <h5 class="card-title">Suite Eco Premium</h5>
+                            <p class="card-text">Lujosa suite con jacuzzi privado, terraza y vistas espectaculares al bosque.</p>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <strong class="text-primary">$250 / noche</strong>
+                                <button class="btn btn-sm btn-outline-primary">Ver detalles</button>
+                            </div>
+                            <div class="mt-3">
+                                <small>
+                                    <i class="fas fa-wifi me-2"></i>WiFi gratis
+                                    <i class="fas fa-coffee ms-3 me-2"></i>Desayuno
+                                    <i class="fas fa-hot-tub ms-3 me-2"></i>Jacuzzi
+                                </small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="text-center mt-4">
+                <a href="#" class="btn btn-outline-primary">Ver todas las habitaciones</a>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-5 bg-light">
+        <div class="container">
+            <h2 class="text-center mb-5">Servicios y Comodidades</h2>
+            <div class="row text-center">
+                <div class="col-md-3 mb-4">
+                    <div class="amenity-icon">
+                        <i class="fas fa-wifi"></i>
+                    </div>
+                    <h5>WiFi Gratuito</h5>
+                    <p>Conexión de alta velocidad en todas las áreas del hotel.</p>
+                </div>
+                <div class="col-md-3 mb-4">
+                    <div class="amenity-icon">
+                        <i class="fas fa-swimming-pool"></i>
+                    </div>
+                    <h5>Piscina Ecológica</h5>
+                    <p>Disfruta de nuestra piscina natural purificada con plantas.</p>
+                </div>
+                <div class="col-md-3 mb-4">
+                    <div class="amenity-icon">
+                        <i class="fas fa-utensils"></i>
+                    </div>
+                    <h5>Restaurante Orgánico</h5>
+                    <p>Ingredientes locales y orgánicos para una experiencia gastronómica única.</p>
+                </div>
+                <div class="col-md-3 mb-4">
+                    <div class="amenity-icon">
+                        <i class="fas fa-spa"></i>
+                    </div>
+                    <h5>Spa Natural</h5>
+                    <p>Tratamientos con productos 100% naturales y orgánicos.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-5">
+        <div class="container">
+            <h2 class="text-center mb-5">Promociones Especiales</h2>
+            <div class="row">
+                <div class="col-md-6 mb-4">
+                    <div class="card">
+                        <div class="row g-0">
+                            <div class="col-md-4">
+                                <img src="/api/placeholder/300/200" class="img-fluid rounded-start h-100" alt="Promoción">
+                            </div>
+                            <div class="col-md-8">
+                                <div class="card-body">
+                                    <h5 class="card-title">Paquete Luna de Miel</h5>
+                                    <p class="card-text">Incluye 3 noches en Suite, cena romántica, masajes en pareja y recorrido por viñedo local.</p>
+                                    <p class="card-text"><small class="text-muted">Desde $699</small></p>
+                                    <button class="btn btn-sm btn-primary">Reservar ahora</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 mb-4">
+                    <div class="card">
+                        <div class="row g-0">
+                            <div class="col-md-4">
+                                <img src="/api/placeholder/300/200" class="img-fluid rounded-start h-100" alt="Promoción">
+                            </div>
+                            <div class="col-md-8">
+                                <div class="card-body">
+                                    <h5 class="card-title">Escapada Fin de Semana</h5>
+                                    <p class="card-text">2 noches, desayuno incluido, acceso a spa y una clase de yoga entre la naturaleza.</p>
+                                    <p class="card-text"><small class="text-muted">Desde $299</small></p>
+                                    <button class="btn btn-sm btn-primary">Reservar ahora</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-5 bg-light">
+        <div class="container">
+            <h2 class="text-center mb-5">Lo que dicen nuestros huéspedes</h2>
+            <div class="row">
+                <div class="col-md-4 mb-4">
+                    <div class="card review-card h-100 p-4">
+                        <div class="d-flex align-items-center mb-3">
+                            <img src="/api/placeholder/50/50" class="rounded-circle me-3" alt="Cliente">
+                            <div>
+                                <h6 class="mb-0">María González</h6>
+                                <div class="star-rating">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <p class="card-text">"Una experiencia maravillosa. Las habitaciones son muy cómodas y el personal es extremadamente amable. La comida del restaurante es deliciosa. Volveremos pronto."</p>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="card review-card h-100 p-4">
+                        <div class="d-flex align-items-center mb-3">
+                            <img src="/api/placeholder/50/50" class="rounded-circle me-3" alt="Cliente">
+                            <div>
+                                <h6 class="mb-0">Juan Pérez</h6>
+                                <div class="star-rating">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star-half-alt"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <p class="card-text">"Increíble lugar para desconectar. El spa es espectacular y las vistas desde la habitación son inmejorables. Lo recomendaré a todos mis amigos."</p>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="card review-card h-100 p-4">
+                        <div class="d-flex align-items-center mb-3">
+                            <img src="/api/placeholder/50/50" class="rounded-circle me-3" alt="Cliente">
+                            <div>
+                                <h6 class="mb-0">Ana Martínez</h6>
+                                <div class="star-rating">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <p class="card-text">"El mejor hotel en el que he estado. La atención al detalle es impresionante y el compromiso con el medio ambiente es admirable. Definitivamente regresaré."</p>
+                    </div>
+                </div>
+            </div>
+            <div class="text-center mt-4">
+                <a href="#" class="btn btn-outline-primary">Ver todas las reseñas</a>
+            </div>
+        </div>
+    </section>
+
+    <footer class="pt-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-3 mb-4">
+                    <h5 class="mb-4"><i class="fas fa-leaf me-2"></i>Green Haven Hotel</h5>
+                    <p>Un oasis de tranquilidad y sostenibilidad en armonía con la naturaleza.</p>
+                    <div class="social-links mt-3">
+                        <a href="#" class="text-light me-3"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="text-light me-3"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="text-light me-3"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="text-light"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                <div class="col-lg-3 mb-4">
+                    <h5 class="mb-4">Enlaces Rápidos</h5>
+                    <ul class="list-unstyled">
+                        <li class="mb-2"><a href="#" class="text-light text-decoration-none">Inicio</a></li>
+                        <li class="mb-2"><a href="#" class="text-light text-decoration-none">Habitaciones</a></li>
+                        <li class="mb-2"><a href="#" class="text-light text-decoration-none">Servicios</a></li>
+                        <li class="mb-2"><a href="#" class="text-light text-decoration-none">Promociones</a></li>
+                        <li class="mb-2"><a href="#" class="text-light text-decoration-none">Contacto</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-3 mb-4">
+                    <h5 class="mb-4">Contacto</h5>
+                    <p><i class="fas fa-map-marker-alt me-2"></i> Av. de la Naturaleza 123, Ciudad Verde</p>
+                    <p><i class="fas fa-phone me-2"></i> +123 456 7890</p>
+                    <p><i class="fas fa-envelope me-2"></i> info@greenhavenhotel.com</p>
+                </div>
+                <div class="col-lg-3 mb-4">
+                    <h5 class="mb-4">Newsletter</h5>
+                    <p>Suscríbete para recibir nuestras mejores ofertas</p>
+                    <form>
+                        <div class="input-group">
+                            <input type="email" class="form-control" placeholder="Tu email">
+                            <button class="btn btn-light" type="button">Enviar</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="text-center py-4 mt-4 border-top border-secondary">
+                <p class="mb-0">&copy; 2025 Green Haven Hotel. Todos los derechos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <div class="modal fade" id="loginModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Iniciar Sesión</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="loginForm">
+                        <div class="mb-3">
+                            <label for="email" class="form-label">Email</label>
+                            <input type="email" class="form-control" id="email" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="pass" class="form-label">Contraseña</label>
+                            <input type="password" class="form-control" id="pass" required>
+                        </div>
+                        <div class="d-grid gap-2">
+                            <button type="button" class="btn btn-primary" id="login-btn">Iniciar Sesión</button>
+                            <button type="button" class="btn btn-outline-primary btnGoogle">
+                                <i class="fab fa-google me-2"></i>Continuar con Google
+                            </button>
+                            <button type="button" class="btn btn-outline-primary btnFacebook">
+                                <i class="fab fa-facebook-f me-2"></i>Continuar con Facebook
+                            </button>
+                            <button type="button" class="btn btn-outline-primary btnGitHub">
+                                <i class="fab fa-github me-2"></i>Continuar con GitHub
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="registerModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Registro</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="registerForm">
+                        <div class="mb-3">
+                            <label for="nombre" class="form-label">Nombre completo</label>
+                            <input type="text" class="form-control" id="nombre" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="emailr" class="form-label">Email</label>
+                            <input type="email" class="form-control" id="emailr" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="passr" class="form-label">Contraseña</label>
+                            <input type="password" class="form-control" id="passr" required>
+                        </div>
+                        <div class="d-grid gap-2">
+                            <button type="button" class="btn btn-primary" id="register-btn">Registrarse</button>
+                            <button type="button" class="btn btn-outline-primary btnGoogle">
+                                <i class="fab fa-google me-2"></i>Continuar con Google
+                            </button>
+                            <button type="button" class="btn btn-outline-primary btnFacebook">
+                                <i class="fab fa-facebook-f me-2"></i>Continuar con Facebook
+                            </button>
+                            <button type="button" class="btn btn-outline-primary btnGitHub">
+                                <i class="fab fa-github me-2"></i>Continuar con GitHub
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <script src="js/conefire.js" type="module"></script>
+</body>
+</html>
+ las acciones y conexion esta el final de prompt
+REQUERIMENTOS HOTEL
+
+1.Interfaz de usuario(Frontend)
+	-Busqueda y filtros avanzados 
+		-Tipos de habitacion (individual, doble, suite)
+		-Precio, ubicacion, comodidades (WIFI, piscina, desayuno incluido mas comodidades)
+		-Promociones de paquetes
+	-Galeria de imagenes (fotos de habitaciones e instalaciones)
+	-Sistema de resenas y puntuaciones (como booking o airbnb)
+	-Diseno desponsivo
+2.Proceso de reserva
+	-Disponibilidad en tiempo real (sincronizado con el sistema del hotel)
+	-Seleccion de extras (desayuno, traslado al aeropuesto, spa)
+	-Reserva instantanea o solicitud de confirmacion (segun politicas del hotel)
+	-Email con detalles de la reserva
+3. Panel de administracion (Backend)
+	-Gestion de habitaciones(anadir, editar, deshabilitar)
+	-Calendario de reservas (vista por dias/semanas/meses)
+	-Sistema de overbooking(alertas si se supera la capacidad)
+4.Autenticacion y perfiles
+	-Registro/login de usuarios(con email, google, facebook y github)
+	-Perfil del huesped(historial de reservas, preferencias)
+	-Panel para hoteleros(gestion de multiples sucursales)
+5.Base de datos, con firebase sus conexion es esta // Importar las funciones necesarias de Firebase (versión 11.5.0)
+import { initializeApp } from "https://www.gstatic.com/firebasejs/11.5.0/firebase-app.js";
+import { getAnalytics } from "https://www.gstatic.com/firebasejs/11.5.0/firebase-analytics.js";
+import {
+  getAuth,
+  createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,
+  GoogleAuthProvider,
+  FacebookAuthProvider,
+  GithubAuthProvider,
+  signInWithPopup
+} from "https://www.gstatic.com/firebasejs/11.5.0/firebase-auth.js";
+import { getFirestore, collection, addDoc } from "https://www.gstatic.com/firebasejs/11.5.0/firebase-firestore.js";
+
+// Configuración de Firebase (reemplaza estos valores si es necesario)
+const firebaseConfig = {
+  apiKey: "AIzaSyC-aNVuzglJo_BXaFf9vPciPe9FkXwhnZQ",
+  authDomain: "alxnhx-87f0f.firebaseapp.com",
+  projectId: "alxnhx-87f0f",
+  storageBucket: "alxnhx-87f0f.firebasestorage.app",
+  messagingSenderId: "292560467644",
+  appId: "1:292560467644:web:dc0f4847e499b6cf2682b9",
+  measurementId: "G-KWTRMWWTWN"
+};
+
+// Inicializar Firebase
+const app = initializeApp(firebaseConfig);
+const analytics = getAnalytics(app);
+const auth = getAuth(app);
+const db = getFirestore(app);
+
+// --------------------------
+// ELEMENTOS DEL DOM
+// --------------------------
+
+// Para el formulario de registro
+const nombreInput = document.getElementById('nombre');
+const emailRInput = document.getElementById('emailr');
+const passRInput = document.getElementById('passr');
+const registerBtn = document.getElementById('register-btn');
+
+// Para el formulario de inicio de sesión
+const emailInput = document.getElementById('email');
+const passInput = document.getElementById('pass');
+const loginBtn = document.getElementById('login-btn');
+
+// Botones de proveedores (se usan clases para evitar duplicados en el HTML)
+// Se asume que en el HTML ambos formularios usan estos botones con las siguientes clases
+const btnGoogleElements = document.querySelectorAll('.btnGoogle');
+const btnFacebookElements = document.querySelectorAll('.btnFacebook');
+const btnGitHubElements = document.querySelectorAll('.btnGitHub');
+
+// Función para guardar la información del usuario en Firestore (colección "formulario")
+async function guardarUsuarioEnFirebase(user, nombre = '') {
+  try {
+    await addDoc(collection(db, 'formulario'), {
+      uid: user.uid, // Fundamental para cumplir las reglas de seguridad en Firestore
+      email: user.email,
+      fechaRegistro: new Date().toISOString(),
+      nombre: nombre
+    });
+    console.log('Usuario registrado en Firestore');
+  } catch (error) {
+    console.error('Error al registrar usuario en Firestore', error);
+  }
+}
+
+function agregarEventoProveedor(selector, provider, mensaje) {
+  const elementos = document.querySelectorAll(selector);
+  elementos.forEach((btn) => {
+    btn.addEventListener('click', (e) => {
+      e.preventDefault(); // Evitar el comportamiento por defecto del botón
+      signInWithPopup(auth, provider)
+        .then((result) => {
+          const user = result.user;
+          alert(`${mensaje} (${user.email})`);
+          console.log(`${mensaje}:`, user);
+          guardarUsuarioEnFirebase(user);
+        })
+        .catch((error) => {
+          console.error(`Error con ${mensaje}:`, error);
+          alert(`Error al iniciar sesión con ${mensaje}`);
+        });
+    });
+  });
+}
+
+
+registerBtn.addEventListener('click', (e) => {
+  e.preventDefault();
+  const nombre = nombreInput.value;
+  const email = emailRInput.value;
+  const password = passRInput.value;
+
+  createUserWithEmailAndPassword(auth, email, password)
+    .then((userCredential) => {
+      const user = userCredential.user;
+      alert(`Usuario registrado: ${user.email}`);
+      console.log('Usuario registrado:', user);
+      guardarUsuarioEnFirebase(user, nombre);
+    })
+    .catch((error) => {
+      console.error("Error al registrar usuario:", error);
+      alert("Error al registrar usuario. Inténtalo de nuevo");
+    });
+});
+
+loginBtn.addEventListener('click', (e) => {
+  e.preventDefault();
+  const email = emailInput.value;
+  const password = passInput.value;
+
+signInWithEmailAndPassword(auth, email, password)
+.then((userCredential) => {
+  window.location.href = 'practica.html'; // Redirección
+});
+
+signInWithPopup(auth, provider)
+.then((result) => {
+  window.location.href = 'practica.html';
+});
+
+});
+
+
+
+agregarEventoProveedor('.btnGoogle', new GoogleAuthProvider(), "Bienvenido (Google)");
+
+agregarEventoProveedor('.btnFacebook', new FacebookAuthProvider(), "Bienvenido (Facebook)");
+
+agregarEventoProveedor('.btnGitHub', new GithubAuthProvider(), "Bienvenido (GitHub)");
+y estas son mis reglas rules_version = '2';
+
+service cloud.firestore {
+  match /databases/{database}/documents {
+    match /formulario/{docId} {
+      // Permitir crear solo si el usuario está autenticado y
+      // el campo uid enviado en el documento coincide con su UID.
+      allow create: if request.auth != null 
+                    && request.resource.data.uid == request.auth.uid;
+      
+      // Permitir leer, actualizar y eliminar solo si el documento 
+      // tiene un campo uid que coincide con el UID del usuario autenticado.
+      allow read, update, delete: if request.auth != null 
+                    && resource.data.uid == request.auth.uid;
+    }
+  }
+} dime si tengo que crear nuevas colecciones

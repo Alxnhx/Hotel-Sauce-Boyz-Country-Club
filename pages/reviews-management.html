@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Gestionar Reseñas | Sauce Boyz Country Club</title>
+  <link
+    href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+    rel="stylesheet"
+  />
+  <!-- Firebase, FontAwesome -->
+  <script src="https://kit.fontawesome.com/0d234d02b1.js" crossorigin="anonymous"></script>
+</head>
+<body>
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container">
+      <a class="navbar-brand" href="../index.html">
+        <i class="fas fa-leaf me-2"></i>Admin Panel
+      </a>
+      <div id="auth-status" class="ms-auto"></div>
+    </div>
+  </nav>
+
+  <main class="container py-5">
+    <h1 class="mb-4">Gestión de Reseñas</h1>
+
+    <div class="row mb-4">
+      <div class="col-md-6">
+        <input
+          type="text"
+          id="searchReviewInput"
+          class="form-control"
+          placeholder="Buscar por usuario o contenido"
+        />
+      </div>
+      <div class="col-md-6 text-md-end mt-3 mt-md-0">
+        <button
+          id="deleteSelectedReviews"
+          class="btn btn-danger"
+          disabled
+        >
+          Eliminar seleccionadas
+        </button>
+      </div>
+    </div>
+
+    <!-- Spinner -->
+    <div id="reviewsSpinner" class="text-center my-5">
+      <div class="spinner-border" role="status"></div>
+      <p class="mt-2">Cargando reseñas...</p>
+    </div>
+
+    <!-- Tabla -->
+    <div id="reviewsTableContainer" class="table-responsive" style="display:none">
+      <table class="table table-striped" id="reviewsTable">
+        <thead class="table-dark">
+          <tr>
+            <th><input type="checkbox" id="selectAllReviews" /></th>
+            <th>ID</th>
+            <th>Usuario (UID)</th>
+            <th>Calificación</th>
+            <th>Contenido</th>
+            <th>Fecha</th>
+            <th>Acciones</th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+    </div>
+  </main>
+
+  <!-- Scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script type="module" src="../js/firebaseConfig.js"></script>
+  <script type="module" src="../js/reviews-management.js"></script>
+</body>
+</html>

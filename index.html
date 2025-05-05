@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sauce Boyz Country Club</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/principal.css">
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg sticky-top"> 
+        <div class="container">
+            <a class="navbar-brand" href="#">
+                <i class="fas fa-leaf me-2"></i>Sauce Boyz Country Club
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto me-3">
+                    <li class="nav-item"><a class="nav-link" href="index.html">Inicio</a></li>
+                    <li class="nav-item"><a class="nav-link" href="rooms.html">Habitaciones</a></li>
+                    <li class="nav-item"><a class="nav-link" href="pages/my-reservations.html">Mis Reservas</a></li>
+                    <li class="nav-item" id="adminLink" style="display: none;">
+                        <a class="nav-link" href="pages/admin.html">Admin</a>
+                      </li>                      
+                </ul>
+            <div id="auth-buttons">
+            </div>
+          </div>
+        </div>
+      </nav>
+
+    <section class="hero-section text-center">
+        <div class="container">
+            <h1 class="display-4 fw-bold">Descubre el paraíso natural</h1>
+            <p class="lead">Disfruta de una experiencia única en armonía con la naturaleza</p>
+            <button id="btn-hero-reserve" class="btn btn-light btn-lg mt-3">Reserva ahora</button>
+        </div>
+    </section>
+      
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-10">
+                <div class="search-box">
+                    <form id="search-form">
+                        <div class="row g-3">
+                            <div class="col-md-3">
+                                <label class="form-label">Fecha de llegada</label>
+                                <input type="date" class="form-control">
+                            </div>
+                            <div class="col-md-3">
+                                <label class="form-label">Fecha de salida</label>
+                                <input type="date" class="form-control">
+                            </div>
+                            <div class="col-md-2">
+                                <label class="form-label">Adultos</label>
+                                <select class="form-select">
+                                    <option value="1">1</option>
+                                    <option value="2">2</option>
+                                    <option value="3">3</option>
+                                    <option value="4">4</option>
+                                </select>
+                            </div>
+                            <div class="col-md-2">
+                                <label class="form-label">Niños</label>
+                                <select class="form-select">
+                                    <option value="0">0</option>
+                                    <option value="1">1</option>
+                                    <option value="2">2</option>
+                                    <option value="3">3</option>
+                                </select>
+                            </div>
+                            <div class="col-md-2 d-flex align-items-end">
+                                <button type="submit" class="btn btn-primary w-100">Buscar</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    
+
+    <section class="py-5">
+        <div class="container">
+          <h2 class="text-center mb-5">Nuestras Habitaciones</h2>
+          <div class="row row-cols-1 row-cols-md-3 g-4" id="rooms-list"></div>
+          <div class="text-center mt-4">
+            <a href="rooms.html" class="btn btn-outline-primary">Ver todas las habitaciones</a>
+          </div>
+        </div>
+      </section>
+      
+
+    <section class="py-5 bg-light">
+        <div class="container">
+            <h2 class="text-center mb-5">Servicios y Comodidades</h2>
+            <div class="row text-center">
+                <div class="col-md-3 mb-4">
+                    <div class="amenity-icon">
+                        <i class="fas fa-wifi"></i>
+                    </div>
+                    <h5>WiFi Gratuito</h5>
+                    <p>Conexión de alta velocidad en todas las áreas del hotel.</p>
+                </div>
+                <div class="col-md-3 mb-4">
+                    <div class="amenity-icon">
+                        <i class="fas fa-swimming-pool"></i>
+                    </div>
+                    <h5>Piscina Ecológica</h5>
+                    <p>Disfruta de nuestra piscina natural purificada con plantas.</p>
+                </div>
+                <div class="col-md-3 mb-4">
+                    <div class="amenity-icon">
+                        <i class="fas fa-utensils"></i>
+                    </div>
+                    <h5>Restaurante Orgánico</h5>
+                    <p>Ingredientes locales y orgánicos para una experiencia gastronómica única.</p>
+                </div>
+                <div class="col-md-3 mb-4">
+                    <div class="amenity-icon">
+                        <i class="fas fa-spa"></i>
+                    </div>
+                    <h5>Spa Natural</h5>
+                    <p>Tratamientos con productos 100% naturales y orgánicos.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-5 bg-light">
+        <div class="container">
+            <h2 class="text-center mb-5">Lo que dicen nuestros huéspedes</h2>
+            <div id="reviews-list" class="row g-4">
+                             <!-- Aquí inyectaremos las reseñas -->
+                           </div>
+                           <div class="text-center mt-4">
+                             <a href="/pages/reviews.html" class="btn btn-outline-primary">
+                               Ver todas las reseñas
+                             </a>
+                           </div>
+        </div>
+    </section>
+    
+    <section class="py-5">
+        <div class="container">
+          <h2 class="text-center mb-4">Preguntas Frecuentes</h2>
+          <div class="accordion" id="faqAccordion">
+      
+            <div class="accordion-item">
+              <h2 class="accordion-header" id="faqHeading1">
+                <button class="accordion-button collapsed" type="button"
+                        data-bs-toggle="collapse" data-bs-target="#faqCollapse1"
+                        aria-expanded="false" aria-controls="faqCollapse1">
+                        ¿A qué hora es el check-in y el check-out?
+                </button>
+              </h2>
+              <div id="faqCollapse1" class="accordion-collapse collapse"
+                   aria-labelledby="faqHeading1" data-bs-parent="#faqAccordion">
+                <div class="accordion-body">
+                    El horario de check-in es a partir de las 3:00 PM y el check-out es a las 12:00 PM.                </div>
+              </div>
+            </div>
+      
+            <div class="accordion-item">
+              <h2 class="accordion-header" id="faqHeading2">
+                <button class="accordion-button collapsed" type="button"
+                        data-bs-toggle="collapse" data-bs-target="#faqCollapse2"
+                        aria-expanded="false" aria-controls="faqCollapse2">
+                        ¿Puedo hacer el check-in anticipado?                </button>
+              </h2>
+              <div id="faqCollapse2" class="accordion-collapse collapse"
+                   aria-labelledby="faqHeading2" data-bs-parent="#faqAccordion">
+                <div class="accordion-body">
+                    Haremos todo lo posible por tener su habitación lista antes, pero está sujeto a disponibilidad. Por favor, acérquese a recepción a su llegada y le informaremos.                </div>
+              </div>
+            </div>
+      
+            <div class="accordion-item">
+              <h2 class="accordion-header" id="faqHeading3">
+                <button class="accordion-button collapsed" type="button"
+                        data-bs-toggle="collapse" data-bs-target="#faqCollapse3"
+                        aria-expanded="false" aria-controls="faqCollapse3">
+                        ¿Puedo solicitar una habitación específica (piso alto, vistas, cerca del elevador)?                </button>
+              </h2>
+              <div id="faqCollapse3" class="accordion-collapse collapse"
+                   aria-labelledby="faqHeading3" data-bs-parent="#faqAccordion">
+                <div class="accordion-body">
+                    Tomamos en cuenta sus preferencias y haremos nuestro mejor esfuerzo para asignarle la habitación que desea, aunque no podemos garantizarlo hasta el momento de su llegada debido a la disponibilidad.                </div>
+              </div>
+            </div>
+            <div class="accordion-item">
+              <h2 class="accordion-header" id="faqHeading4">
+                <button class="accordion-button collapsed" type="button"
+                        data-bs-toggle="collapse" data-bs-target="#faqCollapse4"
+                        aria-expanded="false" aria-controls="faqCollapse4">
+                        ¿Qué necesito para hacer el check-in? (Identificación, tarjeta de crédito)?                </button>
+              </h2>
+              <div id="faqCollapse4" class="accordion-collapse collapse"
+                   aria-labelledby="faqHeading4" data-bs-parent="#faqAccordion">
+                <div class="accordion-body">
+                    Necesitará una identificación oficial con fotografía y una tarjeta de crédito válida para cubrir cualquier gasto adicional. También podríamos solicitar la tarjeta con la que realizó la reserva.                </div>
+              </div>
+            </div>
+            <div class="accordion-item">
+              <h2 class="accordion-header" id="faqHeading5">
+                <button class="accordion-button collapsed" type="button"
+                        data-bs-toggle="collapse" data-bs-target="#faqCollapse5"
+                        aria-expanded="false" aria-controls="faqCollapse5">
+                        ¿Cuál es su política de cancelación?              </h2>
+              <div id="faqCollapse5" class="accordion-collapse collapse"
+                   aria-labelledby="faqHeading5" data-bs-parent="#faqAccordion">
+                <div class="accordion-body">
+                    Nuestra política de cancelación varía según la tarifa reservada. Por favor, consulte los detalles en su confirmación de reserva o póngase en contacto con nosotros para obtener más información.              </div>
+            </div>
+            <div class="accordion-item">
+              <h2 class="accordion-header" id="faqHeading6">
+                <button class="accordion-button collapsed" type="button"
+                        data-bs-toggle="collapse" data-bs-target="#faqCollapse6"
+                        aria-expanded="false" aria-controls="faqCollapse3">
+                        ¿Dónde puedo estacionar y cuál es el costo?              </h2>
+              <div id="faqCollapse6" class="accordion-collapse collapse"
+                   aria-labelledby="faqHeading6" data-bs-parent="#faqAccordion">
+                <div class="accordion-body">
+                    Contamos con estacionamiento [mencionar si es en el hotel, subterráneo, etc.]. Para los huéspedes del hotel, el estacionamiento si es gratuito.              </div>
+            </div>
+      
+          </div>
+        </div>
+      </section>
+      
+
+    <footer class="pt-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-3 mb-4">
+                    <h5 class="mb-4"><i class="fas fa-leaf me-2"></i>Green Haven Hotel</h5>
+                    <p>Un oasis de tranquilidad y sostenibilidad en armonía con la naturaleza.</p>
+                    <div class="social-links mt-3">
+                        <a href="#" class="text-light me-3"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="text-light me-3"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="text-light me-3"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="text-light"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                <div class="col-lg-3 mb-4">
+                    <h5 class="mb-4">Enlaces Rápidos</h5>
+                    <ul class="list-unstyled">
+                        <li class="mb-2"><a href="#" class="text-light text-decoration-none">Inicio</a></li>
+                        <li class="mb-2"><a href="#" class="text-light text-decoration-none">Habitaciones</a></li>
+                        <li class="mb-2"><a href="#" class="text-light text-decoration-none">Servicios</a></li>
+                        <li class="mb-2"><a href="#" class="text-light text-decoration-none">Promociones</a></li>
+                        <li class="mb-2"><a href="#" class="text-light text-decoration-none">Contacto</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-3 mb-4">
+                    <h5 class="mb-4">Contacto</h5>
+                    <p><i class="fas fa-map-marker-alt me-2"></i> Av. de la Naturaleza 123, Ciudad Verde</p>
+                    <p><i class="fas fa-phone me-2"></i> +123 456 7890</p>
+                    <p><i class="fas fa-envelope me-2"></i> info@greenhavenhotel.com</p>
+                </div>
+                <div class="col-lg-3 mb-4">
+                    <h5 class="mb-4">Newsletter</h5>
+                    <p>Suscríbete para recibir nuestras mejores ofertas</p>
+                    <form>
+                        <div class="input-group">
+                            <input type="email" class="form-control" placeholder="Tu email">
+                            <button class="btn btn-light" type="button">Enviar</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="text-center py-4 mt-4 border-top border-secondary">
+                <p class="mb-0">&copy; 2025 Green Haven Hotel. Todos los derechos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <div class="modal fade" id="loginModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Iniciar Sesión</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="loginForm">
+                        <div class="mb-3">
+                            <label for="email" class="form-label">Email</label>
+                            <input type="email" class="form-control" id="email" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="pass" class="form-label">Contraseña</label>
+                            <input type="password" class="form-control" id="pass" required>
+                        </div>
+                        <div class="d-grid gap-2">
+                            <button type="button" class="btn btn-primary" id="login-btn">Iniciar Sesión</button>
+                            <button type="button" class="btn btn-outline-primary btnGoogle">
+                                <i class="fab fa-google me-2"></i>Continuar con Google
+                            </button>
+                            <button type="button" class="btn btn-outline-primary btnFacebook">
+                                <i class="fab fa-facebook-f me-2"></i>Continuar con Facebook
+                            </button>
+                            <button type="button" class="btn btn-outline-primary btnGitHub">
+                                <i class="fab fa-github me-2"></i>Continuar con GitHub
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="registerModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Registro</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="registerForm">
+                        <div class="mb-3">
+                            <label for="nombre" class="form-label">Nombre completo</label>
+                            <input type="text" class="form-control" id="nombre" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="emailr" class="form-label">Email</label>
+                            <input type="email" class="form-control" id="emailr" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="passr" class="form-label">Contraseña</label>
+                            <input type="password" class="form-control" id="passr" required>
+                        </div>
+                        <div class="d-grid gap-2">
+                            <button type="button" class="btn btn-primary" id="register-btn">Registrarse</button>
+                            <button type="button" class="btn btn-outline-primary btnGoogle">
+                                <i class="fab fa-google me-2"></i>Continuar con Google
+                            </button>
+                            <button type="button" class="btn btn-outline-primary btnFacebook">
+                                <i class="fab fa-facebook-f me-2"></i>Continuar con Facebook
+                            </button>
+                            <button type="button" class="btn btn-outline-primary btnGitHub">
+                                <i class="fab fa-github me-2"></i>Continuar con GitHub
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script type="module">
+  import { auth } from './js/firebaseConfig.js';
+  import { onAuthStateChanged, signOut } from 'https://www.gstatic.com/firebasejs/11.5.0/firebase-auth.js';
+
+  onAuthStateChanged(auth, user => {
+    const authButtons = document.getElementById('auth-buttons');
+    if (user) {
+      authButtons.innerHTML = `
+        <span class="navbar-text text-light me-2">${user.displayName}</span>
+        <button class="btn btn-sm btn-outline-light" id="logoutBtn">Cerrar Sesión</button>
+      `;
+      document.getElementById('logoutBtn').addEventListener('click', () => signOut(auth));
+    } else {
+      authButtons.innerHTML = `
+        <button class="btn btn-sm btn-outline-light me-2" data-bs-toggle="modal" data-bs-target="#loginModal">
+          Iniciar Sesión
+        </button>
+        <button class="btn btn-sm btn-light" data-bs-toggle="modal" data-bs-target="#registerModal">
+          Registrarse
+        </button>
+      `;
+    }
+  });
+</script>
+    
+    <script type="module" src="js/firebaseConfig.js"></script>
+    <script type="module" src="js/auth.js"></script>
+    <script type="module" src="js/rooms.js"></script>
+    <script type="module" src="js/main.js"></script>
+    <script type="module" src="js/admin.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
