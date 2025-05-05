@@ -203,3 +203,50 @@ body{
 .container.active .toggle-right{
     transform: translateX(200%);
 }
+@media (max-width: 768px) {
+    .container {
+        width: 100%;
+        height: auto;
+        flex-direction: column;
+        border-radius: 0;
+        box-shadow: none;
+    }
+
+    .form-container {
+        position: relative;
+        width: 100%;
+        height: auto;
+        transform: none !important;
+        opacity: 1 !important;
+        z-index: 1 !important;
+        animation: none !important;
+    }
+
+    .toggle-container {
+        display: none;
+    }
+
+    .sign-in,
+    .sign-up {
+        width: 100%;
+    }
+
+    .container.active .sign-in,
+    .container.active .sign-up {
+        transform: none;
+    }
+
+    form {
+        padding: 20px;
+    }
+
+    .social-icons {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .container button {
+        width: 100%;
+        padding: 12px;
+    }
+}
